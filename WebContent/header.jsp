@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,12 +25,27 @@
       <li class="nav-item active">
         <a class="nav-link" href="home.jsp">Home <span class="sr-only">(current)</span></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="login.jsp">Login</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="register.jsp">Register</a>
-      </li>
+      
+      <!--Expression Language (EL) -->
+      <c:if test="${un==null}">
+      	<li class="nav-item">
+        	<a class="nav-link" href="login.jsp">Login</a>
+      	</li>
+      	<li class="nav-item">
+        	<a class="nav-link" href="register.jsp">Register</a>
+      	</li>
+      </c:if>
+      
+      
+      <c:if test="${un!=null}">
+      	<li class="nav-item">
+        	<a class="nav-link" href="addbook.jsp">Add Book</a>
+      	</li>
+      	<li class="nav-item">
+	        <a class="nav-link" href="login.jsp">Logout</a>
+    	  </li>
+      </c:if>
+      
       <li class="nav-item">
         <a class="nav-link" href="aboutus.jsp">About Us</a>
       </li>

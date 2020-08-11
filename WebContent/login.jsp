@@ -13,10 +13,20 @@
 </style>
 </head>
 <body>
+		<!-- Scriplet Tag -->
+		<!-- Scriplet is used to write java code in jsp -->
+		<!-- Earlier we used to write all scriplets tag for java code -->
+		<!-- But combining pure java and html is difficult -->
+		<!-- But JSTL Tags combines with html very easily -->
+	    <%
+	    	session.removeAttribute("un");
+	    	session.invalidate();
+	    %>
+	    
 		<div class="container">
 		<jsp:include page="header.jsp"></jsp:include>
 		
-		<form class="col-lg-6 col-md-9 col-sm-12 col-xs-12 myclass">
+		<form action='LoginServlet'method='post' class="col-lg-6 col-md-9 col-sm-12 col-xs-12 myclass">
 			<div class="form-group">
 				<label>Enter Username</label>
 				<input type="text" name="username" placeholder="Enter Username" class="form-control"/>
