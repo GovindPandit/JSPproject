@@ -33,7 +33,7 @@ public class AddBookServlet extends HttpServlet
 			ps.setFloat(3, price);
 			ps.setString(4, link);
 			ps.executeUpdate();
-			resp.sendRedirect("home.jsp");
+			resp.sendRedirect("books.jsp");
 		}
 		catch(Exception e)
 		{

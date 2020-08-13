@@ -36,7 +36,16 @@
       	</li>
       </c:if>
       
-      
+      <li class="nav-item">
+        <a class="nav-link" href="books.jsp">Books</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="aboutus.jsp">About Us</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="contactus.jsp">Contact Us</a>
+      </li>
+       
       <c:if test="${un!=null}">
       	<li class="nav-item">
         	<a class="nav-link" href="addbook.jsp">Add Book</a>
@@ -45,13 +54,6 @@
 	        <a class="nav-link" href="login.jsp">Logout</a>
     	  </li>
       </c:if>
-      
-      <li class="nav-item">
-        <a class="nav-link" href="aboutus.jsp">About Us</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="contactus.jsp">Contact Us</a>
-      </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
