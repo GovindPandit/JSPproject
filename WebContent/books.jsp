@@ -20,25 +20,18 @@
 		select * from books
 	</sql:query>
 			
-	<div class="container">		 
-	<table class="table">
-	 	<tr>
-	 		<th>Book Id</th>
-	 		<th>Book Name</th>
-	 		<th>Book Author</th>
-	 		<th>Book Price</th>
-	 		<th>Book Link</th>
-	 	</tr>
-	<c:forEach items="${rs.rows}" var="row">
-		<tr>
-			<td>${row.bookid}</td>
-			<td>${row.bookname}</td>
-			<td>${row.author}</td>
-			<td>${row.price}</td>
-			<td>${row.link}</td>
-		</tr>
-	</c:forEach>
-	</table>
+	<div class="container">
+		<div class="row">
+			<c:forEach items="${rs.rows}" var="row">
+				<div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+					<a href="book.jsp?bookid=${row.bookid}"><img src="ImageServlet?id=${row.bookid}" style="height:300px" class="col-lg-12"/></a>
+					<h3 class="col-lg-12">${row.bookname}</h3>
+					<h4 class="col-lg-12">Rs. ${row.price}</h4>
+					<a href="" class="btn btn-success btn-block">Add To Cart</a>
+					<a href="" class="btn btn-danger btn-block">Buy</a>
+				</div>
+			</c:forEach>
+		</div>
 	</div>	    
 	<jsp:include page="footer.jsp"></jsp:include>
 </body>
