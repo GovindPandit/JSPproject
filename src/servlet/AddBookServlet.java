@@ -34,12 +34,13 @@ public class AddBookServlet extends HttpServlet
 		{
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/demo","root","root");
-			PreparedStatement ps=con.prepareStatement("insert into books (bookname,author,price,link,image) values(?,?,?,?,?)");
+			PreparedStatement ps=con.prepareStatement("insert into books (bookname,author,price,link,image,status) values(?,?,?,?,?,?)");
 			ps.setString(1, bookname);
 			ps.setString(2, author);
 			ps.setFloat(3, price);
 			ps.setString(4, link);
 			ps.setBlob(5, is);
+			ps.setString(6, "A");
 			ps.executeUpdate();
 			resp.sendRedirect("books.jsp");
 		}

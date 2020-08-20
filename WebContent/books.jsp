@@ -17,7 +17,7 @@
 					   var="con"/>
 					   
 	<sql:query var="rs" dataSource="${con}">
-		select * from books
+		select * from books where status='A'
 	</sql:query>
 			
 	<div class="container">
