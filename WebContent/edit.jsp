@@ -34,6 +34,10 @@
 		<c:forEach items="${rs.rows}" var="row">
 		<form action='UpdateBookServlet' method='post' class="myclass col-lg-6 col-md-9 col-sm-12 col-xs-12">
 			<div class="form-group">
+				<label>Enter Book id</label>
+				<input type="text" name="bookid" value="${row.bookid}" placeholder="Enter Bookid" class="form-control"/>
+			</div>
+			<div class="form-group">
 				<label>Enter Book Name</label>
 				<input type="text" name="bookname" value="${row.bookname}" placeholder="Enter BookName" class="form-control"/>
 			</div>

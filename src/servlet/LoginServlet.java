@@ -14,33 +14,42 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.User;
+
 @WebServlet(name="LoginServlet",urlPatterns = "/LoginServlet")
 public class LoginServlet extends HttpServlet
 {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException 
 	{
-		String username=req.getParameter("username");
-		String password=req.getParameter("password");
+		User u=new User();
+		u.setUsername(req.getParameter("username"));
+		u.setPassword(req.getParameter("password"));
+		
 		try
 		{
+			
+			
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/demo","root","root");
 			PreparedStatement ps=con.prepareStatement("select * from users where username=? and password=?");
-			ps.setString(1, username);
-			ps.setString(2, password);
+			ps.setString(1, u.getUsername());
+			ps.setString(2, u.getPassword());
 			ResultSet rs=ps.executeQuery();
 
 			PrintWriter out=resp.getWriter();
 			if(rs.next()) 
 			{
+				u.setEmail(rs.getString("email"));
+				u.setRole(rs.getString("role"));
+				
 				HttpSession hs=req.getSession();
 				hs.setMaxInactiveInterval(60*2);
-				hs.setAttribute("un", username);
-				
+				hs.setAttribute("u", u);
+
 				out.println(""
 						+ "<script>"
-						+ "alert('Welcome "+username+"');"
+						+ "alert('Welcome "+u.getUsername()+"');"
 						+ "window.location='home.jsp';"
 						+ "</script>");
 			}

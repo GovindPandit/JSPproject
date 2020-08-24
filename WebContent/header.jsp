@@ -27,7 +27,7 @@
       </li>
       
       <!--Expression Language (EL) -->
-      <c:if test="${un==null}">
+      <c:if test="${u.username==null}">
       	<li class="nav-item">
         	<a class="nav-link" href="login.jsp">Login</a>
       	</li>
@@ -46,10 +46,12 @@
         <a class="nav-link" href="contactus.jsp">Contact Us</a>
       </li>
        
-      <c:if test="${un!=null}">
-      	<li class="nav-item">
-        	<a class="nav-link" href="addbook.jsp">Add Book</a>
-      	</li>
+      <c:if test="${u.username!=null}">
+        <c:if test="${u.role=='admin'}">
+      		<li class="nav-item">
+        		<a class="nav-link" href="addbook.jsp">Add Book</a>
+      		</li>
+      	</c:if>
       	<li class="nav-item">
 	        <a class="nav-link" href="login.jsp">Logout</a>
     	  </li>

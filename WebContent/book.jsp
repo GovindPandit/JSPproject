@@ -47,8 +47,10 @@
 						<a href="${row.link}" target="_blank" class="btn btn-secondary btn-block">Read</a>
 					</c:if>
 					<!-- Url Rewriting Technique -->
-					<a href="DeleteServlet?bookid=${row.bookid}" class="btn btn-danger btn-block">Delete</a>
-					<a href="edit.jsp?bookid=${row.bookid}" class="btn btn-warning btn-block">Edit</a>
+					<c:if test="${u.role=='admin'}">
+						<a href="DeleteServlet?bookid=${row.bookid}" class="btn btn-danger btn-block">Delete</a>
+						<a href="edit.jsp?bookid=${row.bookid}" class="btn btn-warning btn-block">Edit</a>
+					</c:if>
 				</div>
 			</c:forEach>
 		</div>
