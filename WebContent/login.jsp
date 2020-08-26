@@ -36,6 +36,9 @@
 				<input type="password" name="password" placeholder="Enter Password" class="form-control"/>
 			</div>
 			<div class="form-group">
+				<a href="collectemail.jsp">Forgot Password?</a>
+			</div>
+			<div class="form-group">
 				<input type="submit" value="Login" class="btn btn-primary btn-block"/>
 				<input type="reset" value="Reset" class="btn btn-danger btn-block"/>
 			</div>
