@@ -52,6 +52,9 @@
         		<a class="nav-link" href="addbook.jsp">Add Book</a>
       		</li>
       	</c:if>
+      		<li class="nav-item">
+        		<a class="nav-link" href="cart.jsp">Cart</a>
+      		</li>
       	<li class="nav-item">
 	        <a class="nav-link" href="login.jsp">Logout</a>
     	  </li>

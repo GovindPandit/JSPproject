@@ -9,7 +9,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<jsp:include page="header.jsp"></jsp:include>
+	<jsp:include page="header.jsp"></jsp:include>
 	<sql:setDataSource driver="com.mysql.jdbc.Driver"
 					   url="jdbc:mysql://localhost:3306/demo"
 					   user="root"
@@ -19,13 +19,20 @@
 	<!-- Display only particular book -->
 	<!-- Take bookid from last page books.jsp using ${param.bookid} -->   
 	<sql:query var="rs" dataSource="${con}">
+		select * from cartitems where username=?
+		<sql:param>${u.username}</sql:param>
+	</sql:query>
+	
+	
+	<c:forEach items="${rs.rows}" var="cartdetails">
+	<sql:query var="rs2" dataSource="${con}">
 		select * from books where bookid=?
-		<sql:param>${param.bookid}</sql:param>
+		<sql:param>${cartdetails.bookid}</sql:param>
 	</sql:query>
 			
 	<div class="container">
 		<div class="row">
-			<c:forEach items="${rs.rows}" var="row">
+			<c:forEach items="${rs2.rows}" var="row">
 				<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 					<a href="book.jsp?bookid=${row.bookid}"><img src="ImageServlet?id=${row.bookid}" class="col-lg-12"/></a>
 				</div>
@@ -54,7 +61,9 @@
 				</div>
 			</c:forEach>
 		</div>
-	</div>	    
+	</div>	
+	</c:forEach>    
 	<jsp:include page="footer.jsp"></jsp:include>
+	
 </body>
 </html>

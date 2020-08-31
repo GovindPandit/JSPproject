@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -44,9 +45,19 @@ public class LoginServlet extends HttpServlet
 				u.setRole(rs.getString("role"));
 				
 				HttpSession hs=req.getSession();
-				hs.setMaxInactiveInterval(60*2);
+				//hs.setMaxInactiveInterval(60*2);
 				hs.setAttribute("u", u);
 
+				Cookie ck1=new Cookie("un", u.getUsername());
+				Cookie ck2=new Cookie("pwd", u.getPassword());
+				
+				ck1.setMaxAge(30);
+				ck2.setMaxAge(30);
+				
+				resp.addCookie(ck1);
+				resp.addCookie(ck2);
+				
+				
 				out.println(""
 						+ "<script>"
 						+ "alert('Welcome "+u.getUsername()+"');"

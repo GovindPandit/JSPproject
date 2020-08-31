@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.User;
 
-@WebFilter(urlPatterns = {"/addbook.jsp","/edit.jsp","/DeleteServlet"})
+@WebFilter(urlPatterns = {"/AddToCartServlet","/addbook.jsp","/edit.jsp","/DeleteServlet"})
 public class LoginFilter implements Filter
 {
 	@Override
@@ -23,6 +23,9 @@ public class LoginFilter implements Filter
 	{
 			HttpServletRequest req=(HttpServletRequest)request;
 			HttpServletResponse resp=(HttpServletResponse)response;
+			
+			resp.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+			resp.setHeader("Pragma", "no-cache"); // HTTP 1.0.
 			
 			if(req.getSession().getAttribute("u")==null)
 			{
