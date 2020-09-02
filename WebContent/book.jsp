@@ -33,12 +33,17 @@
 					<h3 class="col-lg-12">${row.bookname}</h3>
 					<h5 class="col-lg-12">${row.author}</h5>
 					<h5 class="col-lg-12">Rs. ${row.price}</h5>
-					<a href="AddToCartServlet?bookid=${row.bookid}" class="btn btn-success btn-block">Add To Cart</a>
+					
+					<form action="AddToCartServlet" method="post">
+						<input type="text" name="bookid" value="${row.bookid}" hidden/>
+						Quantity: <input type="number" name="qty"/>
+						<input type="submit" class="btn btn-success btn-block" value="Add To Cart">
+					</form>
 					
 					<!-- Display Buy button only if price is greater than zero -->
 					<!-- Otherwise display read button because book is free -->
 					<c:if test="${row.price>0}">
-						<a href="" class="btn btn-primary btn-block">Buy</a>
+						<a href="OrderController" class="btn btn-primary btn-block">Buy</a>
 					</c:if>
 					
 					<!-- To read book add valid google drive pdf link in database -->

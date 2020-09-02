@@ -19,6 +19,9 @@
 		<!-- But combining pure java and html is difficult -->
 		<!-- But JSTL Tags combines with html very easily -->
 		<%
+			session.removeAttribute("u");
+    		session.invalidate();
+				
 			String username="",password="";
 			try
 			{
@@ -41,11 +44,7 @@
 			}
 		%>
 			
-	    <%
-	    	session.removeAttribute("un");
-	    	session.invalidate();
-	    %>
-	    
+
 		<div class="container">
 		<jsp:include page="header.jsp"></jsp:include>
 		

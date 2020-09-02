@@ -40,7 +40,14 @@
 					<h3 class="col-lg-12">${row.bookname}</h3>
 					<h5 class="col-lg-12">${row.author}</h5>
 					<h5 class="col-lg-12">Rs. ${row.price}</h5>
-					<a href="AddToCartServlet?bookid=${row.bookid}" class="btn btn-success btn-block">Add To Cart</a>
+					<h5 class="col-lg-12">Total Price: ${row.price*cartdetails.quantity}</h5>
+					
+					<form action="UpdateCartServlet" method="post">
+					 	
+						<input type="text" name="bookid" value="${row.bookid}" hidden/>
+						Quantity: <input type="number" name="qty" value="${cartdetails.quantity}"/>
+						<input type="submit" class="btn btn-success btn-block" value="Update Cart">
+					</form>
 					
 					<!-- Display Buy button only if price is greater than zero -->
 					<!-- Otherwise display read button because book is free -->

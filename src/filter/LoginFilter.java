@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.User;
 
-@WebFilter(urlPatterns = {"/AddToCartServlet","/addbook.jsp","/edit.jsp","/DeleteServlet"})
+@WebFilter(urlPatterns = {"/addbook.jsp","/edit.jsp","/DeleteServlet"})
 public class LoginFilter implements Filter
 {
 	@Override
