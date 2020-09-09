@@ -15,10 +15,19 @@
 					   user="root"
 					   password="root"
 					   var="con"/>
-					   
+	
+	<c:if test="${param.bookname!=null}">	
+	<sql:query var="rs" dataSource="${con}">
+		select * from books where status='A' and bookname like '%' ? '%' 
+		<sql:param>${param.bookname}</sql:param>
+	</sql:query>
+	</c:if>
+				
+	<c:if test="${param.bookname==null}">					   
 	<sql:query var="rs" dataSource="${con}">
 		select * from books where status='A'
 	</sql:query>
+	</c:if>
 			
 	<div class="container">
 		<div class="row">
