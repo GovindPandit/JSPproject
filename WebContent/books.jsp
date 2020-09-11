@@ -16,14 +16,28 @@
 					   password="root"
 					   var="con"/>
 	
-	<c:if test="${param.bookname!=null}">	
+	<c:if test="${param.sort!=null}">
+	<c:if test="${param.sort=='hightolow'}">	
+	<sql:query var="rs" dataSource="${con}">
+		select * from books where status='A' order by price desc
+	</sql:query>
+	</c:if>
+	
+	<c:if test="${param.sort=='lowtohigh'}">
+	<sql:query var="rs" dataSource="${con}">
+		select * from books where status='A' order by price ASC
+	</sql:query>
+	</c:if>
+	</c:if>
+	
+	<c:if test="${param.bookname!=null && param.sort==null}">	
 	<sql:query var="rs" dataSource="${con}">
 		select * from books where status='A' and bookname like '%' ? '%' 
 		<sql:param>${param.bookname}</sql:param>
 	</sql:query>
 	</c:if>
 				
-	<c:if test="${param.bookname==null}">					   
+	<c:if test="${param.bookname==null && param.sort==null}">					   
 	<sql:query var="rs" dataSource="${con}">
 		select * from books where status='A'
 	</sql:query>

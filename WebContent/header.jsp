@@ -60,6 +60,9 @@
     	  </li>
       </c:if>
     </ul>
+    
+    <a href="books.jsp?sort=hightolow" class="btn btn-primary">High To Low</a>
+    <a href="books.jsp?sort=lowtohigh" class="btn btn-danger">Low to High</a>
     <form class="form-inline my-2 my-lg-0" action="books.jsp">
       <input class="form-control mr-sm-2" type="search" name="bookname" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
