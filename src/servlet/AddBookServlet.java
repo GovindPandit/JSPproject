@@ -7,6 +7,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -14,6 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
+import javax.sql.DataSource;
 
 @WebServlet(name="AddBookServlet",urlPatterns = "/AddBookServlet")
 @MultipartConfig(maxFileSize = 9999999999L)
@@ -32,8 +35,9 @@ public class AddBookServlet extends HttpServlet
 		
 		try
 		{
-			Class.forName("com.mysql.jdbc.Driver");
-			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/demo","root","root");
+			Context ctx = new InitialContext();
+			DataSource ds = (DataSource) ctx.lookup("java:/comp/env/jdbc/MyLocalDB");
+			Connection con=ds.getConnection();
 			PreparedStatement ps=con.prepareStatement("insert into books (bookname,author,price,link,image,status) values(?,?,?,?,?,?)");
 			ps.setString(1, bookname);
 			ps.setString(2, author);
